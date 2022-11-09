@@ -1,0 +1,34 @@
+QuestSimulation class -
+    Instance Variables:
+        private String name - represents the name of the user's character
+        private String class - represents the user's class
+
+    Constructor:
+        public QuestSimulation (String userName, String userClass)
+            This constructor will create a new QuestSimulation object
+            Sets name to userName, sets class to userClass
+
+    Method:
+        public String introduction ()
+            This method returns the introduction to the quest simulation
+            Text customized to user's name and class
+
+        public int wizardDamage ()
+            Calculates and returns the damage dealt by 3 wizard attacks using Math.random
+                Fireball, Ice breath, 
+
+        public int knightDamage ()
+            Calculates and returns the damage dealt by 3 knight attacks using Math.random
+                Slash, Parry/Block, Jab
+
+        public int barbarianDamage ()
+            Calculates and returns the damage dealt by 3 barbarian attacks using Math.random
+
+
+
+QuestRunner.java -
+
+Step 1:
+
+
+Emperor sends on quest (bandit hideout)
