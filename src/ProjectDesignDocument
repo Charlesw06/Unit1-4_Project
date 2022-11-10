@@ -11,7 +11,9 @@ QuestSimulation class -
     Method:
         public String introduction (String role)
             This method returns the introduction to the quest for The Eye of Das
-            Text customized to user's name and class
+
+        public String questInitiation (String userResponse)
+            This method returns the king's response to user based on the user response to the king's offer
 
         public String chapter1 (String role)
             This method returns the text for the travel to the dungeon
@@ -38,8 +40,13 @@ QuestSimulation class -
 QuestRunner.java -
 
 Step 1: Import scanner utility
-Step 2:
-
+Step 2: Create new scanner and prompt user for character name
+Step 3: Set variable userName to user input
+Step 4: Create new scanner and prompt user for character role
+Step 5: Set variable userRole to user input
+Step 6: Create new QuestSimulation object using userName and userRole
+Step 7: Print out introduction text using introduction method and print statement
+Step 8:
 
 
 
