@@ -9,33 +9,36 @@ QuestSimulation class -
             Sets name to userName, sets class to userRole
 
     Method:
-        public String introduction ()
+        public String introduction (String role)
             This method returns the introduction to the quest for The Eye of Das
             Text customized to user's name and class
 
-        public String chapter1 ()
+        public String chapter1 (String role)
             This method returns the text for the travel to the dungeon
             Obstacle: wizard - thorn growth, knight - goblins, barbarians - large stone
 
-        public String chapter2 ()
+        public String chapter2 (String role)
+            This method returns the text for the first part of the dungeon (traps)
 
-        public String chapter3 ()
+        public String guardianFight (String role)
+            This method returns the text for the second part of the dungeon (the guardian)
 
-        public int wizardDamage ()
+        public int wizardDamage (int move)
             Calculates and returns the damage dealt by 3 wizard moves using Math.random
                 Fireball, Ice breath, Earth barrier
 
-        public int knightDamage ()
+        public int knightDamage (int move)
             Calculates and returns the damage dealt by 3 knight moves using Math.random
                 Slash, Parry/Block, Jab
 
-        public int barbarianDamage ()
+        public int barbarianDamage (int move)
             Calculates and returns the damage dealt by 3 barbarian moves using Math.random
                 Charge, bash, roar
 
 QuestRunner.java -
 
-Step 1:
+Step 1: Import scanner utility
+Step 2:
 
 
 
@@ -43,6 +46,5 @@ Step 1:
 
 
 Emperor sends on quest (bandit hideout)
-- snarky comments by code runner
 - emperor wants eye of das to see over the kingdom
-- colored text(Eye of Das - yellow, narrative text - blue, actions - white/gray)
+- colored text
