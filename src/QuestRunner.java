@@ -17,9 +17,8 @@ public class QuestRunner {
             userRole = role.nextLine();
         }
 
-        System.out.println();
         QuestSimulation newQuest = new QuestSimulation(userName, userRole);
-        System.out.print(newQuest.introduction());
+        System.out.print(newQuest.introductionText());
 
         Scanner answerToQuest = new Scanner(System.in);
         String questAccept = answerToQuest.nextLine();
@@ -29,8 +28,21 @@ public class QuestRunner {
             questAccept = answerToQuest.nextLine();
         }
 
-        System.out.println();
-        System.out.println(newQuest.questInitiation(questAccept));
+        System.out.println(newQuest.questInitiationText(questAccept));
+        System.out.print(newQuest.entranceObstacleText());
 
+        Scanner action = new Scanner(System.in);
+        String entranceAction = action.nextLine();
+
+        while (!(entranceAction.equals("1") || entranceAction.equals("2") || entranceAction.equals("3"))) {
+            System.out.print("Please input a valid answer: ");
+            entranceAction = action.nextLine();
+        }
+
+        System.out.println(newQuest.entranceSolutionText(entranceAction));
+
+        if (!newQuest.getGameOver()) {
+
+        }
     }
 }
