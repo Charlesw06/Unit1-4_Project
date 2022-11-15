@@ -16,14 +16,22 @@ QuestSimulation class -
         public String questInitiationText (String userResponse)
             This method returns the king's response to user based on the user response to the king's offer
 
-        public String entranceObstacleText ()
-            This method returns the text for the obstacle at the dungeon entrance depending on userRole
+        public String knowledgeObstacleText ()
+            This method returns the text for the test of knowledge at the dungeon entrance depending on userRole
 
-        public String entranceSolutionText (String userAction)
-            This method returns the text for the result of the entrance obstacle depending on the user's input
+        public String knowledgeSolutionText (String userAction)
+            This method returns the text for the result of the test of knowledge depending on the user's input
 
-        public String bossFight (String role)
+        public String courageObstacleText ()
+            This method returns the text for the test of courage in the dungeon depending on userRole
+
+        public String courageSolutionText (String userAction)
+            This method returns the text for the result of the test of courage depending on the user's input
+
+        public String strengthObstacleText ()
             This method returns the text for the second part of the dungeon (the guardian)
+
+        public String strengthSolutionText (String userAction)
 
         public int damage (String move)
             Calculates and returns the damage dealt by a move using Math.random depending on role
@@ -52,3 +60,4 @@ Step 8:
 Emperor sends on quest (bandit hideout)
 - emperor wants eye of das to see over the kingdom
 - colored text
+- user gets artifact after test of knowledge, courage, and strength

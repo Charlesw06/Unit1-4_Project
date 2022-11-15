@@ -2,11 +2,9 @@ import java.util.Scanner;
 
 public class QuestRunner {
     public static void main(String[] args) {
-        System.out.println("-=| THE HUNT FOR THE EYE OF DAS |=-\n");
-
-        Scanner s = new Scanner(System.in);
+        Scanner name = new Scanner(System.in);
         System.out.print("What is the name of your character? ");
-        String userName = s.nextLine();
+        String userName = name.nextLine();
 
         Scanner role = new Scanner(System.in);
         System.out.print("What is the role of your character (k = knight, w = wizard, b = barbarian)? ");
@@ -18,6 +16,7 @@ public class QuestRunner {
         }
 
         QuestSimulation newQuest = new QuestSimulation(userName, userRole);
+        System.out.print(newQuest.title());
         System.out.print(newQuest.introductionText());
 
         Scanner answerToQuest = new Scanner(System.in);
@@ -29,7 +28,7 @@ public class QuestRunner {
         }
 
         System.out.println(newQuest.questInitiationText(questAccept));
-        System.out.print(newQuest.entranceObstacleText());
+        System.out.print(newQuest.knowledgeObstacleText());
 
         Scanner action = new Scanner(System.in);
         String entranceAction = action.nextLine();
@@ -39,7 +38,7 @@ public class QuestRunner {
             entranceAction = action.nextLine();
         }
 
-        System.out.println(newQuest.entranceSolutionText(entranceAction));
+        System.out.println(newQuest.knowledgeSolutionText(entranceAction));
 
         if (!newQuest.getGameOver()) {
 
