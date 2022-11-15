@@ -33,7 +33,7 @@ public class QuestSimulation {
             obstacleText = "\nIf front of you stands the dim cave entrance that leads to the dungeon. As you step closer to the\ncave, you realize that a tangle of thorny enchanted vines block the way in. Great. The vines start\nto creep towards you as if they know you are there.\n\nWhat do you do (1 = run away, 2 = fireball, 3 = ice breath): ";
         }
         else {
-            obstacleText = "\nIf front of you stands the dim cave entrance that leads to the dungeon. As you walk deep into the\ncave, you slam face-first into a giant boulder. Not the smartest move. Taking a step back, you\nrealize that the boulder is not a boulder at all. The rock giant opens its glowing eyes and roars.\n\nWhat do you do (";
+            obstacleText = "\nIf front of you stands the dim cave entrance that leads to the dungeon. As you walk deep into the\ncave, you slam face-first into a giant boulder. Not the smartest move. Taking a step back, you\nrealize that the boulder is not a boulder at all. The rock giant opens its glowing eyes and roars.\n\nWhat do you do (1 = roar, 2 = shield smash,3 = axe swing)";
         }
         return "\n-=| THE ENTRANCE |=-\n" + obstacleText;
     }
@@ -45,10 +45,10 @@ public class QuestSimulation {
                 return "\nYou slash at the first goblin and the blade goes clean through. As you turn around face the others,\nyou feel a burning sensation in your thigh. A poison dagger. Didn't you listen during the knight\ntraining lesson last week? Your vision blurs and you fall to the ground.\n\nGAME OVER";
             }
             else if (role.equals("w")) {
-                return "\nThe vines grow faster and faster. Out of instinct, you turn to run away. For some dumb reason, you\nhave decided to wear a long cloak on this quest. Your cloak gets snagged on a thorn and you trip,\n giving the vines time to wrap you up and drag you deep into its lair.\n\nGAME OVER";
+                return "\nThe vines grow faster and faster. Out of instinct, you turn to run away. For some dumb reason, you\nhave decided to wear a long cloak on this quest. Your cloak gets snagged on a thorn and you trip,\ngiving the vines time to wrap you up and drag you deep into its lair.\n\nGAME OVER";
             }
             else {
-                return "\n";
+                return "\nThe rock giant's eyes glow with a burning anger. You let out an ear-splitting roar. Instead of cowering,\nthe giant stands to its full height, around three times your size. Turns out rock giants are\nare not easily intimidated. It brings down a massive stone arm on your head, crushing you instantly.\n\nGAME OVER";
             }
         }
         else if (userAction.equals("2")) {
@@ -64,24 +64,17 @@ public class QuestSimulation {
         return gameOver;
     }
 
-    public int wizardDamage(int move) {
+    public int damage(String move) {
         int damage = 0;
-        if (move == 1) {
-            damage = 10;
+        if (move.equals("1")) {
+            damage = 3;
         }
-        if (move == 2) {
-            damage = 7;
+        if (move.equals("2")) {
+            damage = 2;
         }
-        return damage;
-    }
+        if (move.equals("3")) {
 
-    public int knightDamage() {
-        int damage = 0;
-        return damage;
-    }
-
-    public int barbarianDamage() {
-        int damage = 0;
+        }
         return damage;
     }
 
