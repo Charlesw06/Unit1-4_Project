@@ -50,10 +50,20 @@ public class QuestRunner {
                     System.out.print("Please input a valid answer: ");
                     chairChoice = standUp.nextLine();
                 }
-                System.out.print(newQuest.determinationTestSolution(attemptNum));
+
+                if (chairChoice.equals("y")) {
+                    attemptNum = 6;
+                    System.out.print(newQuest.getUpResult());
+                }
+                if (!newQuest.getGameOver()) {
+                    System.out.print(newQuest.determinationTestDilemma(attemptNum));
+                    chairChoice = standUp.nextLine();
+                }
             }
+        }
 
-
+        if (!newQuest.getGameOver()) {
+            System.out.print(newQuest.determinationTestSolution());
         }
     }
 }

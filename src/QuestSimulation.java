@@ -13,7 +13,7 @@ public class QuestSimulation {
     public static final String ANSI_RED = "\u001B[31m";
 
     public QuestSimulation(String userName, String userRole) {
-        name = userName;
+        name = ANSI_CYAN + userName + ANSI_BLUE;
         role = userRole;
         gameOver = false;
     }
@@ -86,27 +86,37 @@ public class QuestSimulation {
                 resultText = "\nThe rock giant's eyes glow with a burning anger. You take out your axe and swing it at the giant's\nchest. Your axe hits its weak point, a glowing purple crystal that gives the giant life. Pure luck if you\nask me. The giant collapses. Stepping over its body, you continue further into the cave.";
             }
         }
-        return ANSI_BLUE + resultText + "\n\nYou have passed the test of knowledge.";
+        return ANSI_BLUE + resultText + "\n\nA booming voice echoes from the cave. \"YOU HAVE PASSED THE TET OF KNOWLEDGE.\"";
     }
 
     public String determinationTestObstacle() {
         return ANSI_YELLOW + "\n-=| The Chamber |=-\n" + ANSI_BLUE + "\nYou enter a dark chamber. The only light comes from a hole in the ceiling that shines down on a crude\nstone throne. After some time, you sit on the throne despite your instincts telling you otherwise. You\nstart to hear whispers in the shadows." + ANSI_RESET + "\n\nDo you get up (y = yes, n = no): ";
     }
 
-    public String determinationTestSolution(int attemptNum) {
+    public String determinationTestDilemma(int attemptNum) {
+        String voicesText = "";
         if (attemptNum == 1) {
-            return ANSI_BLUE + "\nThe whispers start to form into words. \"" + name + "...\"" + ANSI_RESET + "\n\nDo you get up (y = yes, n = no)";
+            voicesText = "\nThe whispers start to form into words. \"" + name + "...\"";
         }
         else if (attemptNum == 2) {
-
+            voicesText = "\nThe voices become louder. \"Give in " + name + ".\"";
         }
         else if (attemptNum == 3) {
-
+            voicesText = "\nA burning sensation runs through your body as a shadowy hand grips your leg. The voice continue to\nwhisper your name.";
         }
         else if (attemptNum == 4) {
-
+            voicesText = "\nMore hands and arms wrap around you, starting to bind you to the chair. This could be your last chance\nto escape.";
         }
-        return "";
+        return ANSI_BLUE + voicesText + ANSI_RESET + "\n\nDo you get up (y = yes, n = no): ";
+    }
+
+    public String getUpResult() {
+        gameOver = true;
+        return ANSI_BLUE + "\nAs you stand up, shadowy hands grab you. The light goes out and you start to feel like you are being\nwatched. Thousands of glowing white ghoul eyes fixate on you. It is only a matter of minutes before\nyou become one of them, lost int the dark." + ANSI_RED + "\n\nGAME OVER";
+    }
+
+    public String determinationTestSolution() {
+        return ANSI_BLUE + "\nAs the hands are starting cover your body, you start to smell burning flesh. The hands develop burn\nmarks and withdraw from your body. The light was burning the hands of the shadows. A door opens on the\nother side of the chamber. You get up from the chair and walk to the doorway with shaky legs.\n\nThe booming speaks up again, even louder than last time. It seems to come from the door. \"YOU HAVE PASSED THE TEST OF DETERMINATION.\"";
     }
 
     public String determinationObstacleText () {
