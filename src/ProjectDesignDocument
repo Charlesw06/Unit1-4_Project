@@ -16,31 +16,32 @@ QuestSimulation class -
         public String questInitiationText (String userResponse)
             This method returns the king's response to user based on the user response to the king's offer
 
-        public String knowledgeObstacleText ()
+        public String knowledgeTestObstacle ()
             This method returns the text for the test of knowledge at the dungeon entrance depending on userRole
 
-        public String knowledgeSolutionText (String userAction)
+        public String knowledgeTestSolution (String userAction)
             This method returns the text for the result of the test of knowledge depending on the user's input
 
-        public String courageObstacleText ()
+        public String determinationTestObstacle ()
             This method returns the text for the test of courage in the dungeon depending on userRole
 
-        public String courageSolutionText (String userAction)
+        public String determinationTestSolution (String userAction)
             This method returns the text for the result of the test of courage depending on the user's input
 
-        public String strengthObstacleText ()
-            This method returns the text for the second part of the dungeon (the guardian)
+        public String strengthTestObstacle ()
+            This method returns the text for the test of strength.
 
-        public String strengthSolutionText (String userAction)
+        public String strengthBossMove (String userAction)
+            This method randomly picks a move for the boss to make
 
         public int damage (String move)
-            Calculates and returns the damage dealt by a move using Math.random depending on role
+            This method calculates and returns the damage dealt by a player move using Math.random depending on role
 
         public boolean getGameOver ()
-            Returns the gameOver private boolean variable
+            This method returns the gameOver private boolean variable
 
         public String toString ()
-            Prints out boss health and player health for each turn of the boss battle
+            This method prints out boss health and player health for each turn of the boss battle
 
 QuestRunner.java -
 

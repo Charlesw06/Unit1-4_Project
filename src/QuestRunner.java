@@ -28,7 +28,7 @@ public class QuestRunner {
         }
 
         System.out.println(newQuest.questInitiationText(questAccept));
-        System.out.print(newQuest.knowledgeObstacleText());
+        System.out.print(newQuest.knowledgeTestObstacle());
 
         Scanner action = new Scanner(System.in);
         String entranceAction = action.nextLine();
@@ -38,9 +38,21 @@ public class QuestRunner {
             entranceAction = action.nextLine();
         }
 
-        System.out.println(newQuest.knowledgeSolutionText(entranceAction));
+        System.out.println(newQuest.knowledgeTestSolution(entranceAction));
 
         if (!newQuest.getGameOver()) {
+            System.out.print(newQuest.determinationTestObstacle());
+            Scanner standUp = new Scanner(System.in);
+            String chairChoice = standUp.nextLine();
+
+            for (int attemptNum = 1; attemptNum < 5; attemptNum++) {
+                while (!(chairChoice.equals("y") || chairChoice.equals("n"))) {
+                    System.out.print("Please input a valid answer: ");
+                    chairChoice = standUp.nextLine();
+                }
+                System.out.print(newQuest.determinationTestSolution(attemptNum));
+            }
+
 
         }
     }
