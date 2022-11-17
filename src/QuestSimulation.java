@@ -54,25 +54,25 @@ public class QuestSimulation {
         if (userAction.equals("1")) {
             gameOver = true;
             if (role.equals("k")) {
-                resultText = "\nYou slash at the first goblin and the blade goes clean through. As you turn around face the others,\nyou feel a burning sensation in your thigh. A poison dagger. Didn't you listen during the knight\ntraining lesson last week? Your vision blurs and you fall to the ground.\n\n" + ANSI_RED + "GAME OVER";
+                return ANSI_BLUE + "\nYou slash at the first goblin and the blade goes clean through. As you turn around face the others,\nyou feel a burning sensation in your thigh. A poison dagger. Didn't you listen during the knight\ntraining lesson last week? Your vision blurs and you fall to the ground.\n\n" + ANSI_RED + "GAME OVER";
             }
             else if (role.equals("w")) {
-                resultText = "\nThe vines grow faster and faster. Out of instinct, you turn to run away. For some dumb reason, you\nhave decided to wear a long cloak on this quest. Your cloak gets snagged on a thorn and you trip,\ngiving the vines time to wrap you up and drag you deep into its lair.\n\n" + ANSI_RED + "GAME OVER";
+                return ANSI_BLUE + "\nThe vines grow faster and faster. Out of instinct, you turn to run away. For some dumb reason, you\nhave decided to wear a long cloak on this quest. Your cloak gets snagged on a thorn and you trip,\ngiving the vines time to wrap you up and drag you deep into its lair.\n\n" + ANSI_RED + "GAME OVER";
             }
             else {
-                resultText = "\nThe rock giant's eyes glow with a burning anger. You let out an ear-splitting roar. Instead of cowering,\nthe giant stands to its full height, around three times your size. Turns out rock giants are\nare not easily intimidated. It brings down a massive stone arm on your head, crushing you instantly.\n\n" + ANSI_RED + "GAME OVER";
+                return ANSI_BLUE + "\nThe rock giant's eyes glow with a burning anger. You let out an ear-splitting roar. Instead of cowering,\nthe giant stands to its full height, around three times your size. Turns out rock giants are\nare not easily intimidated. It brings down a massive stone arm on your head, crushing you instantly.\n\n" + ANSI_RED + "GAME OVER";
             }
         }
         else if (userAction.equals("2")) {
             gameOver = true;
             if (role.equals("k")) {
-                resultText = "\nYou hop to the side to avoid the first goblin's attack, but you are too slow. Turns out jumping with\ntons of armor on is not the best idea. You feel a knife stab into your back. Then another. And\nanother. The goblins drag you into the cave so they can loot you properly.\n\n" + ANSI_RED + "GAME OVER";
+                return ANSI_BLUE + "\nYou hop to the side to avoid the first goblin's attack, but you are too slow. Turns out jumping with\ntons of armor on is not the best idea. You feel a knife stab into your back. Then another. And\nanother. The goblins drag you into the cave so they can loot you properly.\n\n" + ANSI_RED + "GAME OVER";
             }
             else if (role.equals("w")) {
-                resultText = "\nThe vines grow faster and faster. Yelling an ancient chant, you slam your staff onto the cave floor and\na ball of fire is fired towards th vines. Surprisingly, it has no effect. Apparently, the\nenchants account for fire. The vines wrap you up and drag you deep into its lair.\n\n" + ANSI_RED + "GAME OVER";
+                return ANSI_BLUE + "\nThe vines grow faster and faster. Yelling an ancient chant, you slam your staff onto the cave floor and\na ball of fire is fired towards th vines. Surprisingly, it has no effect. Apparently, the\nenchants account for fire. The vines wrap you up and drag you deep into its lair.\n\n" + ANSI_RED + "GAME OVER";
             }
             else {
-                resultText = "\nThe rock giant's eyes glow with a burning anger. You charge at the beast shield-first. Your shield\nshatters on impact and the giant pushes you back. I honestly don't know what you were expecting.\nThe rock giant brings down a massive stone arm on your head, crushing you instantly.\n\n" + ANSI_RED + "GAME OVER";
+                return ANSI_BLUE + "\nThe rock giant's eyes glow with a burning anger. You charge at the beast shield-first. Your shield\nshatters on impact and the giant pushes you back. I honestly don't know what you were expecting.\nThe rock giant brings down a massive stone arm on your head, crushing you instantly.\n\n" + ANSI_RED + "GAME OVER";
             }
         }
         else {
@@ -112,14 +112,20 @@ public class QuestSimulation {
 
     public String getUpResult() {
         gameOver = true;
-        return ANSI_BLUE + "\nAs you stand up, shadowy hands grab you. The light goes out and you start to feel like you are being\nwatched. Thousands of glowing white ghoul eyes fixate on you. It is only a matter of minutes before\nyou become one of them, lost int the dark." + ANSI_RED + "\n\nGAME OVER";
+        return ANSI_BLUE + "\nAs you stand up, shadowy hands grab you. The light goes out and you start to feel like you are being\nwatched. Thousands of glowing white ghoul eyes fixate on you. It is only a matter of minutes before\nyou become one of them, mind broken from being lost in the dark." + ANSI_RED + "\n\nGAME OVER";
     }
 
     public String determinationTestSolution() {
-        return ANSI_BLUE + "\nAs the hands are starting cover your body, you start to smell burning flesh. The hands develop burn\nmarks and withdraw from your body. The light was burning the hands of the shadows. A door opens on the\nother side of the chamber. You get up from the chair and walk to the doorway with shaky legs.\n\nThe booming speaks up again, even louder than last time. It seems to come from the door. \"YOU HAVE PASSED THE TEST OF DETERMINATION.\"";
+        return ANSI_BLUE + "\nAs the hands are starting cover your body, you start to smell burning flesh. The hands develop burn\nmarks and withdraw from your body. The light was burning the hands of the shadows. A door opens on the\nother side of the chamber. You get up from the chair and walk to the doorway with shaky legs.\n\nThe booming speaks up again, even louder than last time. It seems to come from the door.\n\"YOU HAVE PASSED THE TEST OF DETERMINATION.\"";
     }
 
-    public String determinationObstacleText () {
+    public String strengthTestObstacle () {
+        String text = "\nAfter taking a shaky breath, you step through the doorway. You are standing in a large crystal cavern.\nYour heart skips a beat as you see the creature resting in the center. The Crepice, a legendary giant\nspider encrusted with a layer of diamonds. The beast opens its shining eyes and lets out a terrifying\nscreech. It wants to fight.";
+        return ANSI_YELLOW + "\n-=| The Beast |=-\n" + ANSI_BLUE + text;
+    }
+
+    public String gettingArtifactText() {
+        String text = "\nAfter your eyes adjust, you see that you are standing in an open clearing.";
         return ANSI_YELLOW + "\n-=| He Who Sees All |=-\n";
     }
 

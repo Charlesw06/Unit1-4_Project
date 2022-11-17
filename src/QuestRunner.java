@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class QuestRunner {
     public static void main(String[] args) {
         Scanner name = new Scanner(System.in);
-        System.out.print("What is the name of your character? ");
+        System.out.print("Welcome to the Quest Simulator!\n\nWhat is the name of your character? ");
         String userName = name.nextLine();
 
         Scanner role = new Scanner(System.in);
@@ -51,13 +51,14 @@ public class QuestRunner {
                     chairChoice = standUp.nextLine();
                 }
 
-                if (chairChoice.equals("y")) {
-                    attemptNum = 6;
-                    System.out.print(newQuest.getUpResult());
-                }
                 if (!newQuest.getGameOver()) {
                     System.out.print(newQuest.determinationTestDilemma(attemptNum));
                     chairChoice = standUp.nextLine();
+                }
+
+                if (chairChoice.equals("y")) {
+                    attemptNum = 6;
+                    System.out.print(newQuest.getUpResult());
                 }
             }
         }
