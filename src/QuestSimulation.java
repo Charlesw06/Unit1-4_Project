@@ -3,8 +3,9 @@ public class QuestSimulation {
     private String name;
     private String role;
     private boolean gameOver;
-    private int bossHealth = 100;
+    private int bossHealth = 75;
     private int userHealth = 50;
+    private int userDamage = 0;
 
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_YELLOW = "\u001B[33m";
@@ -94,20 +95,20 @@ public class QuestSimulation {
     }
 
     public String determinationTestDilemma(int attemptNum) {
-        String voicesText = "";
+        String text = "";
         if (attemptNum == 1) {
-            voicesText = "\nThe whispers start to form into words. \"" + name + "...\"";
+            text = "\nThe whispers start to form into words. \"" + name + "...\"";
         }
         else if (attemptNum == 2) {
-            voicesText = "\nThe voices become louder. \"Give in " + name + ".\"";
+            text = "\nThe voices become louder. \"Give in " + name + ".\"";
         }
         else if (attemptNum == 3) {
-            voicesText = "\nA burning sensation runs through your body as a shadowy hand grips your leg. The voice continue to\nwhisper your name.";
+            text = "\nA burning sensation runs through your body as a shadowy hand grips your leg. The voice continue to\nwhisper your name.";
         }
         else if (attemptNum == 4) {
-            voicesText = "\nMore hands and arms wrap around you, starting to bind you to the chair. This could be your last chance\nto escape.";
+            text = "\nMore hands and arms wrap around you, starting to bind you to the chair. This could be your last chance\nto escape.";
         }
-        return ANSI_BLUE + voicesText + ANSI_RESET + "\n\nDo you get up (y = yes, n = no): ";
+        return ANSI_BLUE + text + ANSI_RESET + "\n\nDo you get up (y = yes, n = no): ";
     }
 
     public String getUpResult() {
@@ -116,38 +117,109 @@ public class QuestSimulation {
     }
 
     public String determinationTestSolution() {
-        return ANSI_BLUE + "\nAs the hands are starting cover your body, you start to smell burning flesh. The hands develop burn\nmarks and withdraw from your body. The light was burning the hands of the shadows. A door opens on the\nother side of the chamber. You get up from the chair and walk to the doorway with shaky legs.\n\nThe booming speaks up again, even louder than last time. It seems to come from the door.\n\"YOU HAVE PASSED THE TEST OF DETERMINATION.\"";
+        return ANSI_BLUE + "\nAs the hands are starting cover your body, you start to smell burning flesh. The hands develop burn\nmarks and withdraw from your body. The light was burning the hands of the shadows. A door opens on the\nother side of the chamber. You get up from the chair and walk to the doorway with shaky legs.\n\nThe booming speaks up again, even louder than last time. It seems to come from the door.\n\"YOU HAVE PASSED THE TEST OF DETERMINATION.\"\n";
     }
 
-    public String strengthTestObstacle () {
+    public String strengthTestObstacle() {
         String text = "\nAfter taking a shaky breath, you step through the doorway. You are standing in a large crystal cavern.\nYour heart skips a beat as you see the creature resting in the center. The Crepice, a legendary giant\nspider encrusted with a layer of diamonds. The beast opens its shining eyes and lets out a terrifying\nscreech. It wants to fight.";
         return ANSI_YELLOW + "\n-=| The Beast |=-\n" + ANSI_BLUE + text;
     }
 
+    public String strengthTestMoveChoice() {
+        String moveOptions = "\n\nWhat is your move ";
+        if (role.equals("k")) {
+            moveOptions += "(1 = poison dagger throw, 2 = sword slash, 3 = shield): ";
+        }
+        else if (role.equals("w")) {
+            moveOptions += "(1 = acid spray, 2 = lightning bolt, 3 = magic barrier): ";
+        }
+        else {
+            moveOptions += "(1 = spiked club bash, 2 = axe slash, 3 = shield): ";
+        }
+        return ANSI_RESET + moveOptions;
+    }
+
+    public String moveResult(String userMove) {
+        int bossMove = (int) (Math.random() * 2);
+        userDamage(userMove);
+        if ((bossMove == 0) && !(userMove.equals("3"))) {
+            bossHealth -= userDamage;
+            userHealth -= 5;
+            if (role.equals("k")) {
+                if (userMove.equals("1")) {
+                    return ANSI_BLUE + "\nThe giant spider swipes a leg at you. It knocks you over, but you are able to stab your dagger\ninto the leg as it passes.";
+                }
+                if (userMove.equals("2")) {
+                    return ANSI_BLUE + "\nThe Crepice launches a spiky crystals at you. One hits you. You stab into a chink in the spider's\narmored body.";
+                }
+            }
+            if (role.equals("w")) {
+                if (userMove.equals("1")) {
+                    return ANSI_BLUE + "\nThe giant spider swipes a leg at you. It knocks you over, but you are able to raise your staff\nand spray the Crepice with acid.";
+                }
+                if (userMove.equals("2")) {
+                    return ANSI_BLUE + "\nThe Crepice launches a spiky crystals at you. One hits you. However, you are able to concentrate\nenough to strike the creature with a lightning bolt.";
+                }
+            }
+            if (role.equals("b")) {
+                if (userMove.equals("1")) {
+                    return ANSI_BLUE + "\nThe giant spider swipes a leg at you. It knocks you over, but you are able to bash the crystal\narmor with your club, taking off a small chunk.";
+                }
+                if (userMove.equals("2")) {
+                    return ANSI_BLUE + "\nThe Crepice launches a spiky crystals at you. One hits you. You hack into a chink in the\nspider's armored body with a heavy swing of your axe.";
+                }
+            }
+        }
+        if ((bossMove == 0) && userMove.equals("3")) {
+            return ANSI_BLUE + "\nAs you protect yourself, you feel the impact of one of the Crepice's legs push you back. You roll to\nthe side to avoid getting crushed and stand up to face the beast.";
+        }
+        if (!userMove.equals("3")) {
+            bossHealth -= userDamage;
+            return ANSI_BLUE + "\nYou launch your attack making the creature roar in pain. It misses its counterstrike as you jump\nto the side.";
+        }
+        return ANSI_BLUE + "\nYou get ready to protect yourself, but the Crepice does not make a move. It seems to be storing energy.";
+    }
+
+    public String outOfStamina() {
+        return ANSI_BLUE + "\nYou feel yourself getting tired from the battle. After a few more strikes from the beast, you collapse\nfrom exhaustion.The Crepice uses this opportunity to show off the sharpness of its pincers." + ANSI_RED + "\n\nGAME OVER";
+    }
+    public String strengthTestSolution() {
+        if (gameOver) {
+            return ANSI_BLUE + "The ";
+        }
+        return "";
+    }
+
     public String gettingArtifactText() {
         String text = "\nAfter your eyes adjust, you see that you are standing in an open clearing.";
-        return ANSI_YELLOW + "\n-=| He Who Sees All |=-\n";
+        return ANSI_YELLOW + "\n-=| He Who Sees All |=-\n" + ANSI_BLUE + text;
     }
 
     public boolean getGameOver() {
         return gameOver;
     }
 
-    public int damage(String move) {
+    public void userDamage(String move) {
         int damage = 0;
         if (move.equals("1")) {
-            damage = 3;
+            damage = (int) (Math.random() * 3) + 3;
         }
         if (move.equals("2")) {
-            damage = 2;
+            damage = (int) (Math.random() * 3) + 6;
         }
-        if (move.equals("3")) {
-
-        }
-        return damage;
+        userDamage = damage;
     }
 
     public String toString() {
-        return "";
+        if (userHealth < 0) {
+            userHealth = 0;
+        }
+        if (bossHealth < 0) {
+            bossHealth = 0;
+        }
+        if (userHealth == 0) {
+            gameOver = true;
+        }
+        return ANSI_BLUE + "\nYour health: " + userHealth + ", Boss Health: " + bossHealth;
     }
 }

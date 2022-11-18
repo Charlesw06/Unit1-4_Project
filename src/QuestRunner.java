@@ -43,7 +43,11 @@ public class QuestRunner {
         if (!newQuest.getGameOver()) {
             System.out.print(newQuest.determinationTestObstacle());
             Scanner standUp = new Scanner(System.in);
+
             String chairChoice = standUp.nextLine();
+            if (chairChoice.equals("y")) {
+                System.out.print(newQuest.getUpResult());
+            }
 
             for (int attemptNum = 1; attemptNum < 5; attemptNum++) {
                 while (!(chairChoice.equals("y") || chairChoice.equals("n"))) {
@@ -54,17 +58,35 @@ public class QuestRunner {
                 if (!newQuest.getGameOver()) {
                     System.out.print(newQuest.determinationTestDilemma(attemptNum));
                     chairChoice = standUp.nextLine();
-                }
 
-                if (chairChoice.equals("y")) {
-                    attemptNum = 6;
-                    System.out.print(newQuest.getUpResult());
+                    if (chairChoice.equals("y")) {
+                        attemptNum = 6;
+                        System.out.print(newQuest.getUpResult());
+                    }
                 }
             }
         }
 
         if (!newQuest.getGameOver()) {
             System.out.print(newQuest.determinationTestSolution());
+            System.out.print(newQuest.strengthTestObstacle());
+            Scanner moveChoice = new Scanner(System.in);
+
+            for (int turnNum = 1; turnNum < 25; turnNum++) {
+                System.out.print(newQuest.strengthTestMoveChoice());
+                String userMove = moveChoice.nextLine();
+
+                while (!(userMove.equals("1") || userMove.equals("2") || userMove.equals("3"))) {
+                    System.out.print("Please input a valid answer: ");
+                    userMove = moveChoice.nextLine();
+                }
+                if (!newQuest.getGameOver()) {
+                    System.out.print(newQuest.moveResult(userMove));
+                    System.out.print(newQuest.toString());
+                }
+            }
         }
+
+
     }
 }
