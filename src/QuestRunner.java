@@ -72,7 +72,8 @@ public class QuestRunner {
             System.out.print(newQuest.strengthTestObstacle());
             Scanner moveChoice = new Scanner(System.in);
 
-            for (int turnNum = 1; turnNum < 25; turnNum++) {
+            int turnNum = 1;
+            while ((turnNum < 25) && (newQuest.getBossHealth() != 0) && (!newQuest.getGameOver())) {
                 System.out.print(newQuest.strengthTestMoveChoice());
                 String userMove = moveChoice.nextLine();
 
@@ -84,9 +85,14 @@ public class QuestRunner {
                     System.out.print(newQuest.moveResult(userMove));
                     System.out.print(newQuest.toString());
                 }
+                turnNum++;
             }
+            System.out.print(newQuest.strengthTestSolution());
         }
 
+        if (!newQuest.getGameOver()) {
+            System.out.print(newQuest.gettingArtifactText());
+        }
 
     }
 }

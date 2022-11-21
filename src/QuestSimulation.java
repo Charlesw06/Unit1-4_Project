@@ -185,9 +185,19 @@ public class QuestSimulation {
     }
     public String strengthTestSolution() {
         if (gameOver) {
-            return ANSI_BLUE + "The ";
+            return ANSI_BLUE + "The Crepice launches itself at you. You manage to block the first leg swipe but a second one swipes\nyou off your feet. You are knocked out at your head hits a crystal poking out of the ground" + ANSI_RED + "\n\nGAME OVER";
         }
-        return "";
+        String winText = "";
+        if (role.equals("k")) {
+            winText = ANSI_BLUE + "\n\nDodging another swipe from the Crepice, you find its weak point, under its stomach. Mustering all\nyour strength, you chuck your poison dagger into the gap in the armor. The spider collapses as\nthe poison spreads through its body.";
+        }
+        if (role.equals("w")) {
+            winText = ANSI_BLUE + "\n\nDodging another swipe from the Crepice, you find its weak point, under its stomach. Mustering all\nyour strength, focus a ball of fire into the gap in the armor. The spider collapses as the its\nbody burns from the inside.\";";
+        }
+        if (role.equals("b")) {
+            winText = ANSI_BLUE + "\n\nDodging another swipe from the Crepice, you find its weak point, under its stomach. Mustering all\nyour strength, you chuck your axe into the gap in the armor. It collapses as the weapon slices\nright through its body.";
+        }
+        return winText + "\n\nThe booming voice echoes through the crystal cavern. \"YOU HAVE PASSED THE TEST OF STRENGTH.\" This\ntime, it adds something else. \"JOIN ME AND REVIECE YOUR REWARD.\" Suddenly, a bright light flashes\nand you feel your body being transported out of the cave.";
     }
 
     public String gettingArtifactText() {
@@ -197,6 +207,10 @@ public class QuestSimulation {
 
     public boolean getGameOver() {
         return gameOver;
+    }
+
+    public int getBossHealth() {
+        return bossHealth;
     }
 
     public void userDamage(String move) {
