@@ -55,25 +55,25 @@ public class QuestSimulation {
         if (userAction.equals("1")) {
             gameOver = true;
             if (role.equals("k")) {
-                return ANSI_BLUE + "\nYou slash at the first goblin and the blade goes clean through. As you turn around face the others,\nyou feel a burning sensation in your thigh. A poison dagger. Didn't you listen during the knight\ntraining lesson last week? Your vision blurs and you fall to the ground.\n\n" + ANSI_RED + "GAME OVER";
+                return ANSI_BLUE + "\nYou slash at the first goblin and the blade goes clean through. As you turn around face the others,\nyou feel a burning sensation in your thigh. A poison dagger. Didn't you listen during the knight\ntraining lesson last week? Your vision blurs and you fall to the ground.\n\n" + ANSI_CYAN + "You achieved ending #1: DEATH AT THE GATE\n\n" + ANSI_RED + "GAME OVER";
             }
             else if (role.equals("w")) {
-                return ANSI_BLUE + "\nThe vines grow faster and faster. Out of instinct, you turn to run away. For some dumb reason, you\nhave decided to wear a long cloak on this quest. Your cloak gets snagged on a thorn and you trip,\ngiving the vines time to wrap you up and drag you deep into its lair.\n\n" + ANSI_RED + "GAME OVER";
+                return ANSI_BLUE + "\nThe vines grow faster and faster. Out of instinct, you turn to run away. For some dumb reason, you\nhave decided to wear a long cloak on this quest. Your cloak gets snagged on a thorn and you trip,\ngiving the vines time to wrap you up and drag you deep into its lair.\n\n" + ANSI_CYAN + "You achieved ending #1: DEATH AT THE GATE\n\n" + ANSI_RED + "GAME OVER";
             }
             else {
-                return ANSI_BLUE + "\nThe rock giant's eyes glow with a burning anger. You let out an ear-splitting roar. Instead of cowering,\nthe giant stands to its full height, around three times your size. Turns out rock giants are\nare not easily intimidated. It brings down a massive stone arm on your head, crushing you instantly.\n\n" + ANSI_RED + "GAME OVER";
+                return ANSI_BLUE + "\nThe rock giant's eyes glow with a burning anger. You let out an ear-splitting roar. Instead of cowering,\nthe giant stands to its full height, around three times your size. Turns out rock giants are\nare not easily intimidated. It brings down a massive stone arm on your head, crushing you instantly.\n\n" + ANSI_CYAN + "You achieved ending #1: DEATH AT THE GATE\n\n" + ANSI_RED + "GAME OVER";
             }
         }
         else if (userAction.equals("2")) {
             gameOver = true;
             if (role.equals("k")) {
-                return ANSI_BLUE + "\nYou hop to the side to avoid the first goblin's attack, but you are too slow. Turns out jumping with\ntons of armor on is not the best idea. You feel a knife stab into your back. Then another. And\nanother. The goblins drag you into the cave so they can loot you properly.\n\n" + ANSI_RED + "GAME OVER";
+                return ANSI_BLUE + "\nYou hop to the side to avoid the first goblin's attack, but you are too slow. Turns out jumping with\ntons of armor on is not the best idea. You feel a knife stab into your back. Then another. And\nanother. The goblins drag you into the cave so they can loot you properly.\n\n" + ANSI_CYAN + "You achieved ending #1: DEATH AT THE GATE\n\n" + ANSI_RED + "GAME OVER";
             }
             else if (role.equals("w")) {
-                return ANSI_BLUE + "\nThe vines grow faster and faster. Yelling an ancient chant, you slam your staff onto the cave floor and\na ball of fire is fired towards th vines. Surprisingly, it has no effect. Apparently, the\nenchants account for fire. The vines wrap you up and drag you deep into its lair.\n\n" + ANSI_RED + "GAME OVER";
+                return ANSI_BLUE + "\nThe vines grow faster and faster. Yelling an ancient chant, you slam your staff onto the cave floor and\na ball of fire is fired towards th vines. Surprisingly, it has no effect. Apparently, the\nenchants account for fire. The vines wrap you up and drag you deep into its lair.\n\n" + ANSI_CYAN + "You achieved ending #1: DEATH AT THE GATE\n\n" + ANSI_RED + "GAME OVER";
             }
             else {
-                return ANSI_BLUE + "\nThe rock giant's eyes glow with a burning anger. You charge at the beast shield-first. Your shield\nshatters on impact and the giant pushes you back. I honestly don't know what you were expecting.\nThe rock giant brings down a massive stone arm on your head, crushing you instantly.\n\n" + ANSI_RED + "GAME OVER";
+                return ANSI_BLUE + "\nThe rock giant's eyes glow with a burning anger. You charge at the beast shield-first. Your shield\nshatters on impact and the giant pushes you back. I honestly don't know what you were expecting.\nThe rock giant brings down a massive stone arm on your head, crushing you instantly.\n\n" + ANSI_CYAN + "You achieved ending #1: DEATH AT THE GATE\n\n" + ANSI_RED + "GAME OVER";
             }
         }
         else {
@@ -113,7 +113,7 @@ public class QuestSimulation {
 
     public String getUpResult() {
         gameOver = true;
-        return ANSI_BLUE + "\nAs you stand up, shadowy hands grab you. The light goes out and you start to feel like you are being\nwatched. Thousands of glowing white ghoul eyes fixate on you. It is only a matter of minutes before\nyou become one of them, mind broken from being lost in the dark." + ANSI_RED + "\n\nGAME OVER";
+        return ANSI_BLUE + "\nAs you stand up, shadowy hands grab you. The light goes out and you start to feel like you are being\nwatched. Thousands of glowing white ghoul eyes fixate on you. It is only a matter of minutes before\nyou become one of them, mind broken from being lost in the dark.\n\n" + ANSI_CYAN + "You achieved ending: LOST IN THE DARK" + ANSI_RED + "\n\nGAME OVER";
     }
 
     public String determinationTestSolution() {
@@ -181,11 +181,11 @@ public class QuestSimulation {
     }
 
     public String outOfStamina() {
-        return ANSI_BLUE + "\nYou feel yourself getting tired from the battle. After a few more strikes from the beast, you collapse\nfrom exhaustion.The Crepice uses this opportunity to show off the sharpness of its pincers." + ANSI_RED + "\n\nGAME OVER";
+        return ANSI_BLUE + "\nYou feel yourself getting tired from the battle. After a few more strikes from the beast, you collapse\nfrom exhaustion.The Crepice uses this opportunity to show off the sharpness of its pincers.\n\n" + ANSI_CYAN + "You achieved ending: TOO TIRED" + ANSI_RED + "\n\nGAME OVER";
     }
     public String strengthTestSolution() {
         if (gameOver) {
-            return ANSI_BLUE + "The Crepice launches itself at you. You manage to block the first leg swipe but a second one swipes\nyou off your feet. You are knocked out at your head hits a crystal poking out of the ground" + ANSI_RED + "\n\nGAME OVER";
+            return ANSI_BLUE + "The Crepice launches itself at you. You manage to block the first leg swipe but a second one swipes\nyou off your feet. You are knocked out at your head hits a crystal poking out of the ground\n\n" + ANSI_CYAN + "You achieved ending: " + ANSI_RED + "\n\nGAME OVER";
         }
         String winText = "";
         if (role.equals("k")) {
@@ -201,7 +201,7 @@ public class QuestSimulation {
     }
 
     public String gettingArtifactText() {
-        String text = "\nAfter your eyes adjust, you see that you are standing in an open clearing.";
+        String text = "\nAfter your eyes adjust, you see that you are standing in an open clearing. In the center, an eyeball carved\n out of emerald stands on a golden pedestal. The " + ANSI_YELLOW + "Eye of Das" + ANSI_BLUE + ".\nA figure steps out from the trees. He silently waves his hand and the artifact floats into\nyour hands. Another wave of light transports you back to the entrance of the dungeon.";
         return ANSI_YELLOW + "\n-=| He Who Sees All |=-\n" + ANSI_BLUE + text;
     }
 
