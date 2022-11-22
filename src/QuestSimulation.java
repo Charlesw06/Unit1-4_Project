@@ -3,9 +3,9 @@ public class QuestSimulation {
     private String name;
     private String role;
     private boolean gameOver;
-    private int bossHealth = 75;
-    private int userHealth = 50;
-    private int userDamage = 0;
+    private int bossHealth;
+    private int userHealth;
+    private int userDamage;
 
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_YELLOW = "\u001B[33m";
@@ -18,6 +18,11 @@ public class QuestSimulation {
         name = ANSI_CYAN + userName + ANSI_BLUE;
         role = userRole;
         gameOver = false;
+    }
+
+    public QuestSimulation(int bossHealth, int userHealth) {
+        this.bossHealth = bossHealth;
+        this.userHealth = userHealth;
     }
 
     public String title() {

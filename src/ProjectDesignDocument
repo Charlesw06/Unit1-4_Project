@@ -3,6 +3,15 @@ QuestSimulation class -
         private String name - represents the name of the user's character
         private String role - represents the user's role
         private boolean gameOver - represents if the game has been lost/finished
+        private int bossHealth - represents health of boss during test of strength;
+        private int userHealth - represents health of player during test of strength;
+        private int userDamage - represents the damage done by ;
+        public static final String ANSI_RESET = "\u001B[0m";
+        public static final String ANSI_YELLOW = "\u001B[33m";
+        public static final String ANSI_BLUE = "\u001B[34m";
+        public static final String ANSI_CYAN = "\u001B[36m";
+        public static final String ANSI_RED = "\u001B[31m";
+        public static final String ANSI_GREEN = "\u001B[32m";
 
     Constructor:
         public QuestSimulation (String userName, String userRole)
