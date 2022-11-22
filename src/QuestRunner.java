@@ -92,7 +92,21 @@ public class QuestRunner {
 
         if (!newQuest.getGameOver()) {
             System.out.print(newQuest.gettingArtifactText());
+
+            Scanner returnDilemma = new Scanner(System.in);
+            System.out.print(newQuest.runAwayDilemma());
+            String answer = returnDilemma.nextLine();
+
+            while (!(answer.equals("y") || (answer.equals("n")))) {
+                System.out.print("Please input a valid answer: ");
+                answer = returnDilemma.nextLine();
+            }
+            System.out.print(newQuest.runAwaySolution(answer));
         }
 
+        if (!newQuest.getGameOver()) {
+            Scanner handOver = new Scanner(System.in);
+
+        }
     }
 }
