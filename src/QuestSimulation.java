@@ -3,8 +3,8 @@ public class QuestSimulation {
     private String name;
     private String role;
     private boolean gameOver;
-    private int bossHealth;
-    private int userHealth;
+    private int bossHealth = 75;
+    private int userHealth = 50;
     private int userDamage;
 
     public static final String ANSI_RESET = "\u001B[0m";
@@ -207,27 +207,27 @@ public class QuestSimulation {
     }
 
     public String gettingArtifactText() {
-        String text = "\nAfter your eyes adjust, you see that you are standing in an open clearing. In the center, an eyeball carved\n out of emerald stands on a golden pedestal. The " + ANSI_YELLOW + "Eye of Das" + ANSI_BLUE + ".\nA figure steps out from the trees. He Who Sees All. Sorcerer Das. He silently waves his hand and the\nartifact floats into your hands. Another wave of light transports you back to the entrance of the dungeon.";
-        return ANSI_YELLOW + "\n-=| He Who Sees All |=-\n" + ANSI_BLUE + text;
+        String text = "\nAfter your eyes adjust, you see that you are standing in an open clearing. In the center, an eyeball\ncarved out of emerald stands on a golden pedestal. The " + ANSI_YELLOW + "Eye of Das" + ANSI_BLUE + ". A figure steps out from the trees. He Who Sees All.\nSorcerer Das. He silently waves his hand and the artifact floats into your hands.\nAnother wave of light transports you back to the entrance of the dungeon.";
+        return ANSI_YELLOW + "\n\n-=| He Who Sees All |=-\n" + ANSI_BLUE + text;
     }
 
     public String runAwayDilemma() {
         String text = "\nYou walk over to your horse getting ready to return to the king with the artifact until a nagging thought\nenters your mind. Does Emperor Avalon really deserve this power? He did not endure the trials himself.\n" + ANSI_RESET + "\nReturn to kingdom (y = return to kingdom, n = run away with artifact)? ";
-        return ANSI_YELLOW + "\n-=| The Final Dilemma |=-\n" + ANSI_BLUE + text;
+        return ANSI_YELLOW + "\n\n-=| The Final Dilemma |=-\n" + ANSI_BLUE + text;
     }
 
     public String runAwaySolution(String decision) {
         if (decision.equals("y")) {
-            return "\n\nYou return to the kingdom where the emperor awaits you with his personal guards. \"I see you have acquired\nthe artifact.\" He stretches out his hand. \"Bring it to me and you shall be free.\"" + ANSI_RESET + "\n\nDo you step forward (y = step forward, n = remain on horse)? ";
+            return ANSI_BLUE + "\n\nYou return to the kingdom where the emperor awaits you with his personal guards. \"I see you have acquired\nthe artifact.\" He stretches out his hand. \"Bring it to me and you shall be free.\"" + ANSI_RESET + "\n\nDo you step forward (y = step forward, n = remain on horse)? ";
         }
         gameOver = true;
-        return "\n\nYou take off the other direction. Over the next few years, you learn the secrets of the " + ANSI_YELLOW + "Eye of Das" + ANSI_BLUE + " and become\nthe artifact's next guardian. The next Sorcerer Das. Eventually, you find a cavern to set up a\nnew dungeon, waiting for a new hero to take up your place." + ANSI_CYAN + "You achieved ending #10: THE ENDLESS CYCLE\n\n" + ANSI_GREEN + "You finished the game!";
+        return ANSI_BLUE + "\n\nYou take off the other direction. Over the next few years, you learn the secrets of the " + ANSI_YELLOW + "Eye of Das" + ANSI_BLUE + " and\nbecome the artifact's next guardian. The next Sorcerer Das. Eventually, you find a cavern to set up a\nnew dungeon, waiting for a new hero to take up your place." + ANSI_CYAN + "\n\nYou achieved ending #10: THE ENDLESS CYCLE\n\n" + ANSI_GREEN + "You finished the game!";
     }
 
     public String handOverDilemma(String decision) {
         gameOver = true;
         if (decision.equals("y")) {
-            return "\n\nYou get off your horse and hand over the artifact. You can see the greed in his eyes as he signals one of\nhis guards to toss you a pouch of gold as extra compensation. In the following years, you decide to\nsettle down";
+            return "\n\nYou get off your horse and hand over the artifact. You can see the greed in his eyes as he signals one of\nhis guards to toss you a pouch of gold as extra compensation. In the following years, the emperor\nincreases his control over the kingdom. His new artifact gives him incredible power. The\npeople of the kingdom may be safe, but Emperor Avalon rules the following era with an iron fist." + ANSI_CYAN + "You achieved ending #11: THE ";
         }
         return "";
     }

@@ -6,17 +6,20 @@ QuestSimulation class -
         private int bossHealth - represents health of boss during test of strength;
         private int userHealth - represents health of player during test of strength;
         private int userDamage - represents the damage done by ;
-        public static final String ANSI_RESET = "\u001B[0m";
-        public static final String ANSI_YELLOW = "\u001B[33m";
-        public static final String ANSI_BLUE = "\u001B[34m";
-        public static final String ANSI_CYAN = "\u001B[36m";
-        public static final String ANSI_RED = "\u001B[31m";
-        public static final String ANSI_GREEN = "\u001B[32m";
+        public static final String ANSI_RESET = contains the ANSI escape code for color reset;
+        public static final String ANSI_YELLOW = contains the ANSI escape code for yellow;
+        public static final String ANSI_BLUE = contains the ANSI escape code for blue;
+        public static final String ANSI_CYAN = contains the ANSI escape code for cyan;
+        public static final String ANSI_RED = contains the ANSI escape code for red;
+        public static final String ANSI_GREEN = contains the ANSI escape code for green;
 
     Constructor:
         public QuestSimulation (String userName, String userRole)
             This constructor will create a new QuestSimulation object
             Sets name to userName, sets class to userRole
+
+        public QuestionSimulation (int userHealth, int bossHealth);
+            This constructor will create a new QuestSimulation object
 
     Method:
         public String introductionText (String role)

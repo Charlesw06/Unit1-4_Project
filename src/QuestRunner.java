@@ -16,7 +16,6 @@ public class QuestRunner {
         }
 
         QuestSimulation newQuest = new QuestSimulation(userName, userRole);
-        QuestSimulation healthReset = new QuestSimulation(75,50);
         System.out.print(newQuest.title());
         System.out.print(newQuest.introductionText());
 
