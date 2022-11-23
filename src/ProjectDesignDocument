@@ -3,76 +3,121 @@ QuestSimulation class -
         private String name - represents the name of the user's character
         private String role - represents the user's role
         private boolean gameOver - represents if the game has been lost/finished
-        private int bossHealth - represents health of boss during test of strength;
-        private int userHealth - represents health of player during test of strength;
-        private int userDamage - represents the damage done by ;
-        public static final String ANSI_RESET = contains the ANSI escape code for color reset;
-        public static final String ANSI_YELLOW = contains the ANSI escape code for yellow;
-        public static final String ANSI_BLUE = contains the ANSI escape code for blue;
-        public static final String ANSI_CYAN = contains the ANSI escape code for cyan;
-        public static final String ANSI_RED = contains the ANSI escape code for red;
-        public static final String ANSI_GREEN = contains the ANSI escape code for green;
+        private int bossHealth - represents health of boss during test of strength
+        private int userHealth - represents health of player during test of strength
+        private int userDamage - represents the damage done by the user
+        public static final String ANSI_RESET = contains the ANSI escape code for color reset
+        public static final String ANSI_YELLOW = contains the ANSI escape code for yellow
+        public static final String ANSI_BLUE = contains the ANSI escape code for blue
+        public static final String ANSI_CYAN = contains the ANSI escape code for cyan
+        public static final String ANSI_RED = contains the ANSI escape code for red
+        public static final String ANSI_GREEN = contains the ANSI escape code for green
 
-    Constructor:
+    Constructors:
         public QuestSimulation (String userName, String userRole)
-            This constructor will create a new QuestSimulation object
-            Sets name to userName, sets class to userRole
+            Sets name to userName (and colors name), sets role to userRole, sets gameOver to false
 
-        public QuestionSimulation (int userHealth, int bossHealth);
-            This constructor will create a new QuestSimulation object
+        public QuestionSimulation (String userRole, int userHealth, int bossHealth);
+            Sets role to userRole, sets userHealth to userHealth, sets userHealth to userHealth
 
-    Method:
+    Methods:
+        public String title ()
+            This method returns the text for the title for the quest
+
         public String introductionText (String role)
-            This method returns the introduction to the quest for The Eye of Das
+            This method returns the text for the introduction to the quest for The Eye of Das
 
         public String questInitiationText (String userResponse)
-            This method returns the king's response to user based on the user response to the king's offer
+            This method returns the text for the king's response to user based on the user response to the king's offer
 
         public String knowledgeTestObstacle ()
-            This method returns the text for the test of knowledge at the dungeon entrance depending on userRole
+            This method returns the text for the test of knowledge at the dungeon entrance depending on role
 
         public String knowledgeTestSolution (String userAction)
-            This method returns the text for the result of the test of knowledge depending on the user's input
+            This method returns the text for the result of the test of knowledge depending on the userAction and role
 
         public String determinationTestObstacle ()
-            This method returns the text for the test of courage in the dungeon depending on userRole
+            This method returns the text for the test of determination in the dungeon
 
         public String determinationTestSolution (String userAction)
-            This method returns the text for the result of the test of courage depending on the user's input
+            This method returns the text for the result of the test of determination depending on the userAction
 
         public String strengthTestObstacle ()
-            This method returns the text for the test of strength.
+            This method returns the text for the test of strength in the dungeon
 
-        public String strengthBossMove (String userAction)
-            This method randomly picks a move for the boss to make
+        public String strengthTestMoveChoice ()
+            This method returns the text for the user's move options depending on role
+
+        public String moveResult (String userMove)
+            This method generates the boss move, uses userDamage to generate the user's damage, changes bossHealth and userHealth according, and returns the result text depending on userRole and userMove
+
+        public String outOfStamina ()
+            This method returns the text for the situation that the user passes 25 turns in the test of strength
+
+        public String strengthTestSolution ()
+            This method returns the text for the end of the strength test battle depending on role and gameOver
+
+        public String gettingArtifactText ()
+            This method returns the text for the user obtaining the Eye of Das
+
+        public String runAwayDilemma ()
+            This method returns the text for the problem of whether the user will return to kingdom or run away
+
+        public String runAwaySolution (String userAction)
+            This method returns the text for the result of the run away dilemma depending on userAction
+
+        public String handOverSolution (String userAction)
+            This method returns the text for the result of the hand over dilemma depending on userAction
 
         public int damage (String move)
             This method calculates and returns the damage dealt by a player move using Math.random depending on role
 
         public boolean getGameOver ()
-            This method returns the gameOver private boolean variable
+            This method returns the value stored in gameOver instance variable
+
+        public int getBossHealth ()
+            This method returns the value stored in bossHealth instance variable
 
         public String toString ()
-            This method prints out boss health and player health for each turn of the boss battle
+            This method prints out boss health and player health for the current turn of the boss battle
 
 QuestRunner.java -
 
 Step 1: Import scanner utility
 Step 2: Create new scanner and prompt user for character name
-Step 3: Set variable userName to user input
+Step 3: Check that input matches an option, set variable userName to user input
 Step 4: Create new scanner and prompt user for character role
-Step 5: Set variable userRole to user input
+Step 5: Check that input matches an option, set variable userRole to user input
 Step 6: Create new QuestSimulation object using userName and userRole
-Step 7: Print out introduction text using introduction method and print statement
-Step 8:
-
-
-
-
-
-Emperor sends on quest (bandit hideout)
-- emperor wants eye of das to see over the kingdom
-- colored text
-- user gets artifact after test of knowledge, courage, and strength
-- tell the user what ending they got, what # ending
-- conclusion: give artifact or run away with eye
+Step 7: Print out title text using title method
+Step 8: Print out introduction text using introduction method
+Step 9: Create new scanner and prompt user for answer to quest
+Step 10: Check that input matches an option, set variable questAccept to user input
+Step 11: Print out quest initiation text using questInitiationText method
+Step 12: Print out knowledge test obstacle text using knowledgeTestObstacle method
+Step 13: Create new scanner and prompt user for action
+Step 14: Check that input matches an option, set variable entranceAction to user input
+Step 15: Print out knowledge test solution using knowledgeTestSolution method
+Step 16: If the game is not over, continue
+Step 17: Print out determination test text using determinationTestObstacle method
+Step 18: Create new scanner and prompt user for stand up choice, set chairChoice to user input
+Step 19: Repeat until user has been asked 5 times or user inputs "y"
+Step 20: If game not over, print out result of determinationTesDilemma method using attemptNum
+Step 21: If chairChoice equals "y", set attemptNum to 6 and print result from getUpResult method
+Step 22: If game not over, continue
+Step 23: Print out results from determinationTestSolution method and strengthTestObstacle method
+Step 24: Create new QuestSimulation object using userRole, 75, and 50
+Step 25: While turn number is less than 25 and boss health is not 0 and game is not over:
+Step 26: Create new scanner and prompt user for move choice
+Step 27: Check that input matches an option, set variable moveChoice to user input
+Step 28: If game not over, print move result and health stats using moveResult and toString methods
+Step 29: If turn number is greater than or equal to 25, print out result of outOfStamina method, else print out result of strengthTestSolution method
+Step 30: If game is not over, continue
+Step 31: Print out result of gettingArtifactText method
+Step 32: Create new scanner and prompt user for return to kingdom decision
+Step 33: Check that input matches option, set variable returnToKingdom to user input
+Step 34: Print out result of runAwaySolution method
+Step 35: If game not over, continue
+Step 36: Create new scanner and prompt user for hand over artifact action
+Step 37: Check that input matches option, set variable handOverArtifact to user input
+Step 38: Print out result of handOverSolution method

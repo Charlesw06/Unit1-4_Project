@@ -43,7 +43,6 @@ public class QuestRunner {
         if (!newQuest.getGameOver()) {
             System.out.print(newQuest.determinationTestObstacle());
             Scanner standUp = new Scanner(System.in);
-
             String chairChoice = standUp.nextLine();
             if (chairChoice.equals("y")) {
                 System.out.print(newQuest.getUpResult());
@@ -72,6 +71,7 @@ public class QuestRunner {
             System.out.print(newQuest.strengthTestObstacle());
             Scanner moveChoice = new Scanner(System.in);
 
+            QuestSimulation newBattle = new QuestSimulation(userRole, 75, 50);
             int turnNum = 1;
             while ((turnNum < 25) && (newQuest.getBossHealth() != 0) && (!newQuest.getGameOver())) {
                 System.out.print(newQuest.strengthTestMoveChoice());
@@ -82,12 +82,18 @@ public class QuestRunner {
                     userMove = moveChoice.nextLine();
                 }
                 if (!newQuest.getGameOver()) {
-                    System.out.print(newQuest.moveResult(userMove));
-                    System.out.print(newQuest.toString());
+                    System.out.print(newBattle.moveResult(userMove));
+                    System.out.print(newBattle.toString());
                 }
                 turnNum++;
             }
-            System.out.print(newQuest.strengthTestSolution());
+
+            if (turnNum >= 25) {
+                System.out.print(newQuest.outOfStamina());
+            }
+            else {
+                System.out.print(newQuest.strengthTestSolution());
+            }
         }
 
         if (!newQuest.getGameOver()) {
@@ -95,18 +101,25 @@ public class QuestRunner {
 
             Scanner returnDilemma = new Scanner(System.in);
             System.out.print(newQuest.runAwayDilemma());
-            String answer = returnDilemma.nextLine();
+            String returnToKingdom = returnDilemma.nextLine();
 
-            while (!(answer.equals("y") || (answer.equals("n")))) {
+            while (!(returnToKingdom.equals("y") || (returnToKingdom.equals("n")))) {
                 System.out.print("Please input a valid answer: ");
-                answer = returnDilemma.nextLine();
+                returnToKingdom = returnDilemma.nextLine();
             }
-            System.out.print(newQuest.runAwaySolution(answer));
+
+            System.out.print(newQuest.runAwaySolution(returnToKingdom));
         }
 
         if (!newQuest.getGameOver()) {
             Scanner handOver = new Scanner(System.in);
+            String handOverArtifact = handOver.nextLine();
 
+            while (!(handOverArtifact.equals("y") || (handOverArtifact.equals("n")))) {
+                System.out.print("Please input a valid answer: ");
+                handOverArtifact = handOver.nextLine();
+            }
+            System.out.println(newQuest.handOverSolution(handOverArtifact));
         }
     }
 }

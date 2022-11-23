@@ -20,7 +20,8 @@ public class QuestSimulation {
         gameOver = false;
     }
 
-    public QuestSimulation(int bossHealth, int userHealth) {
+    public QuestSimulation(String userRole, int bossHealth, int userHealth) {
+        role = userRole;
         this.bossHealth = bossHealth;
         this.userHealth = userHealth;
     }
@@ -61,25 +62,25 @@ public class QuestSimulation {
         if (userAction.equals("1")) {
             gameOver = true;
             if (role.equals("k")) {
-                return ANSI_BLUE + "\nYou slash at the first goblin and the blade goes clean through. As you turn around face the others,\nyou feel a burning sensation in your thigh. A poison dagger. Didn't you listen during the knight\ntraining lesson last week? Your vision blurs and you fall to the ground.\n\n" + ANSI_CYAN + "You achieved ending #1: THAT STINGS\n\n" + ANSI_RED + "GAME OVER";
+                return ANSI_BLUE + "\nYou slash at the first goblin and the blade goes clean through. As you turn around face the others,\nyou feel a burning sensation in your thigh. A poison dagger. Didn't you listen during the knight\ntraining lesson last week? Your vision blurs and you fall to the ground.\n\n" + ANSI_CYAN + "You achieved ending #1 of 12: THAT STINGS\n\n" + ANSI_RED + "GAME OVER";
             }
             else if (role.equals("w")) {
-                return ANSI_BLUE + "\nThe vines grow faster and faster. Out of instinct, you turn to run away. For some dumb reason, you\nhave decided to wear a long cloak on this quest. Your cloak gets snagged on a thorn and you trip,\ngiving the vines time to wrap you up and drag you deep into its lair.\n\n" + ANSI_CYAN + "You achieved ending #2: BLAME IT ON THE WARDROBE\n\n" + ANSI_RED + "GAME OVER";
+                return ANSI_BLUE + "\nThe vines grow faster and faster. Out of instinct, you turn to run away. For some dumb reason, you\nhave decided to wear a long cloak on this quest. Your cloak gets snagged on a thorn and you trip,\ngiving the vines time to wrap you up and drag you deep into its lair.\n\n" + ANSI_CYAN + "You achieved ending #2 of 12: BLAME IT ON THE WARDROBE\n\n" + ANSI_RED + "GAME OVER";
             }
             else {
-                return ANSI_BLUE + "\nThe rock giant's eyes glow with a burning anger. You let out an ear-splitting roar. Instead of cowering,\nthe giant stands to its full height, around three times your size. Turns out rock giants are\nare not easily intimidated. It brings down a massive stone arm on your head, crushing you instantly.\n\n" + ANSI_CYAN + "You achieved ending #3: HOLD UP - THAT'S NOT A ROCK\n\n" + ANSI_RED + "GAME OVER";
+                return ANSI_BLUE + "\nThe rock giant's eyes glow with a burning anger. You let out an ear-splitting roar. Instead of cowering,\nthe giant stands to its full height, around three times your size. Turns out rock giants are\nare not easily intimidated. It brings down a massive stone arm on your head, crushing you instantly.\n\n" + ANSI_CYAN + "You achieved ending #3 of 12: HOLD UP - THAT'S NOT A ROCK\n\n" + ANSI_RED + "GAME OVER";
             }
         }
         else if (userAction.equals("2")) {
             gameOver = true;
             if (role.equals("k")) {
-                return ANSI_BLUE + "\nYou hop to the side to avoid the first goblin's attack, but you are too slow. Turns out jumping with\ntons of armor on is not the best idea. You feel a knife stab into your back. Then another. And\nanother. The goblins drag you into the cave so they can loot you properly.\n\n" + ANSI_CYAN + "You achieved ending #4: NOT MY GOLD\n\n" + ANSI_RED + "GAME OVER";
+                return ANSI_BLUE + "\nYou hop to the side to avoid the first goblin's attack, but you are too slow. Turns out jumping with\ntons of armor on is not the best idea. You feel a knife stab into your back. Then another. And\nanother. The goblins drag you into the cave so they can loot you properly.\n\n" + ANSI_CYAN + "You achieved ending #4 of 12: NOT MY GOLD\n\n" + ANSI_RED + "GAME OVER";
             }
             else if (role.equals("w")) {
-                return ANSI_BLUE + "\nThe vines grow faster and faster. Yelling an ancient chant, you slam your staff onto the cave floor and\na ball of fire is fired towards th vines. Surprisingly, it has no effect. Apparently, the\nenchants account for fire. The vines wrap you up and drag you deep into its lair.\n\n" + ANSI_CYAN + "You achieved ending #5: DANG ENCHANTS\n\n" + ANSI_RED + "GAME OVER";
+                return ANSI_BLUE + "\nThe vines grow faster and faster. Yelling an ancient chant, you slam your staff onto the cave floor and\na ball of fire is fired towards th vines. Surprisingly, it has no effect. Apparently, the\nenchants account for fire. The vines wrap you up and drag you deep into its lair.\n\n" + ANSI_CYAN + "You achieved ending #5 of 12: DANG ENCHANTS\n\n" + ANSI_RED + "GAME OVER";
             }
             else {
-                return ANSI_BLUE + "\nThe rock giant's eyes glow with a burning anger. You charge at the beast shield-first. Your shield\nshatters on impact and the giant pushes you back. I honestly don't know what you were expecting.\nThe rock giant brings down a massive stone arm on your head, crushing you instantly.\n\n" + ANSI_CYAN + "You achieved ending #6: WEAK SHIELD\n\n" + ANSI_RED + "GAME OVER";
+                return ANSI_BLUE + "\nThe rock giant's eyes glow with a burning anger. You charge at the beast shield-first. Your shield\nshatters on impact and the giant pushes you back. I honestly don't know what you were expecting.\nThe rock giant brings down a massive stone arm on your head, crushing you instantly.\n\n" + ANSI_CYAN + "You achieved ending #6 of 12: WEAK SHIELD\n\n" + ANSI_RED + "GAME OVER";
             }
         }
         else {
@@ -119,7 +120,7 @@ public class QuestSimulation {
 
     public String getUpResult() {
         gameOver = true;
-        return ANSI_BLUE + "\nAs you stand up, shadowy hands grab you. The light goes out and you start to feel like you are being\nwatched. Thousands of glowing white ghoul eyes fixate on you. It is only a matter of minutes before\nyou become one of them, mind broken from being lost in the dark.\n\n" + ANSI_CYAN + "You achieved ending #7: LOST IN THE DARK" + ANSI_RED + "\n\nGAME OVER";
+        return ANSI_BLUE + "\nAs you stand up, shadowy hands grab you. The light goes out and you start to feel like you are being\nwatched. Thousands of glowing white ghoul eyes fixate on you. It is only a matter of minutes before\nyou become one of them, mind broken from being lost in the dark.\n\n" + ANSI_CYAN + "You achieved ending #7 of 12: LOST IN THE DARK" + ANSI_RED + "\n\nGAME OVER";
     }
 
     public String determinationTestSolution() {
@@ -187,11 +188,12 @@ public class QuestSimulation {
     }
 
     public String outOfStamina() {
-        return ANSI_BLUE + "\nYou feel yourself getting tired from the battle. After a few more strikes from the beast, you collapse\nfrom exhaustion. You are knocked out at your head hits a crystal poking out of the ground.\n\n" + ANSI_CYAN + "You achieved ending #8: TOO TIRED" + ANSI_RED + "\n\nGAME OVER";
+        gameOver = true;
+        return ANSI_BLUE + "\nYou feel yourself getting tired from the battle. After a few more strikes from the beast, you collapse\nfrom exhaustion. You are knocked out at your head hits a crystal poking out of the ground.\n\n" + ANSI_CYAN + "You achieved ending #8 of 12: TOO TIRED" + ANSI_RED + "\n\nGAME OVER";
     }
     public String strengthTestSolution() {
         if (gameOver) {
-            return ANSI_BLUE + "\n\nThe Crepice launches itself at you. You manage to block the first leg swipe but a second one swipes\nyou off your feet. The Crepice uses this opportunity to show off the sharpness of its pincers.\n\n" + ANSI_CYAN + "You achieved ending #9: THE BEAST'S DINNER" + ANSI_RED + "\n\nGAME OVER";
+            return ANSI_BLUE + "\n\nThe Crepice launches itself at you. You manage to block the first leg swipe but a second one swipes\nyou off your feet. The Crepice uses this opportunity to show off the sharpness of its pincers.\n\n" + ANSI_CYAN + "You achieved ending #9 of 12: THE BEAST'S DINNER" + ANSI_RED + "\n\nGAME OVER";
         }
         String winText = "";
         if (role.equals("k")) {
@@ -207,29 +209,29 @@ public class QuestSimulation {
     }
 
     public String gettingArtifactText() {
-        String text = "\nAfter your eyes adjust, you see that you are standing in an open clearing. In the center, an eyeball\ncarved out of emerald stands on a golden pedestal. The " + ANSI_YELLOW + "Eye of Das" + ANSI_BLUE + ". A figure steps out from the trees. He Who Sees All.\nSorcerer Das. He silently waves his hand and the artifact floats into your hands.\nAnother wave of light transports you back to the entrance of the dungeon.";
+        String text = "\nAfter your eyes adjust, you see that you are standing in an open clearing. In the center, an eyeball\ncarved out of emerald stands on a golden pedestal. The " + ANSI_YELLOW + "Eye of Das" + ANSI_BLUE + ". A figure steps out from the trees.\nHe Who Sees All. Sorcerer Das. He silently waves his hand and the artifact floats into your hands.\nAnother wave of light transports you back to the entrance of the dungeon.";
         return ANSI_YELLOW + "\n\n-=| He Who Sees All |=-\n" + ANSI_BLUE + text;
     }
 
     public String runAwayDilemma() {
-        String text = "\nYou walk over to your horse getting ready to return to the king with the artifact until a nagging thought\nenters your mind. Does Emperor Avalon really deserve this power? He did not endure the trials himself.\n" + ANSI_RESET + "\nReturn to kingdom (y = return to kingdom, n = run away with artifact)? ";
+        String text = "\nYou walk over to your horse getting ready to return to the king with the artifact until a nagging\nthought enters your mind. Does Emperor Avalon really deserve this power? He did not endure the\ntrials himself." + ANSI_RESET + "\n\nReturn to kingdom (y = return to kingdom, n = run away with artifact)? ";
         return ANSI_YELLOW + "\n\n-=| The Final Dilemma |=-\n" + ANSI_BLUE + text;
     }
 
-    public String runAwaySolution(String decision) {
-        if (decision.equals("y")) {
-            return ANSI_BLUE + "\n\nYou return to the kingdom where the emperor awaits you with his personal guards. \"I see you have acquired\nthe artifact.\" He stretches out his hand. \"Bring it to me and you shall be free.\"" + ANSI_RESET + "\n\nDo you step forward (y = step forward, n = remain on horse)? ";
+    public String runAwaySolution(String userAction) {
+        if (userAction.equals("y")) {
+            return ANSI_BLUE + "\nYou return to the kingdom where the emperor awaits you with his personal guards. \"I see you have acquired\nthe artifact.\" He stretches out his hand. \"Bring it to me and you shall be free.\"" + ANSI_RESET + "\n\nDo you step forward (y = step forward, n = remain on horse)? ";
         }
         gameOver = true;
-        return ANSI_BLUE + "\n\nYou take off the other direction. Over the next few years, you learn the secrets of the " + ANSI_YELLOW + "Eye of Das" + ANSI_BLUE + " and\nbecome the artifact's next guardian. The next Sorcerer Das. Eventually, you find a cavern to set up a\nnew dungeon, waiting for a new hero to take up your place." + ANSI_CYAN + "\n\nYou achieved ending #10: THE ENDLESS CYCLE\n\n" + ANSI_GREEN + "You finished the game!";
+        return ANSI_BLUE + "\nYou take off the other direction. Over the next few years, you learn the secrets of the " + ANSI_YELLOW + "Eye of Das" + ANSI_BLUE + " and\nbecome the artifact's next guardian. The next Sorcerer Das. Eventually, you find a cavern to set up a\nnew dungeon, waiting for a new hero to take up your place." + ANSI_CYAN + "\n\nYou achieved ending #10 of 12: THE ENDLESS CYCLE" + ANSI_GREEN + "\n\nYou finished the game!";
     }
 
-    public String handOverDilemma(String decision) {
+    public String handOverSolution(String userAction) {
         gameOver = true;
-        if (decision.equals("y")) {
-            return "\n\nYou get off your horse and hand over the artifact. You can see the greed in his eyes as he signals one of\nhis guards to toss you a pouch of gold as extra compensation. In the following years, the emperor\nincreases his control over the kingdom. His new artifact gives him incredible power. The\npeople of the kingdom may be safe, but Emperor Avalon rules the following era with an iron fist." + ANSI_CYAN + "You achieved ending #11: THE ";
+        if (userAction.equals("y")) {
+            return ANSI_BLUE + "\nYou get off your horse and hand over the artifact. You can see the greed in his eyes as he signals one of\nhis guards to toss you a pouch of gold as extra compensation. In the following years, the emperor\nincreases his control over the kingdom with his new incredible power. The people of the kingdom may be\nsafe, but Emperor Avalon rules the following era with an iron fist." + ANSI_CYAN + "\n\nYou achieved ending #11 of 12: THE IRON RULER" + ANSI_GREEN + "\n\nYou finished the game!";
         }
-        return "";
+        return ANSI_BLUE + "\nThe emperor grows impatient when he notices your hesitancy. He orders his guards to surround you. Knowing that\nyou can't afford to be captured again, you snap your horse's reigns and speed away from the gate.\nYou hear the king's yelling at you, but his demands quickly fade away. You spend the next few years\non the run until you find a trustworthy wizard to guard the artifact." + ANSI_CYAN + "\n\nYou achieved ending #12 of 12: FOREVER ON THE RUN" + ANSI_GREEN + "\n\nYou finished the game!";
     }
 
     public boolean getGameOver() {
