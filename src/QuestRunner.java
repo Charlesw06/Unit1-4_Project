@@ -3,11 +3,11 @@ import java.util.Scanner;
 public class QuestRunner {
     public static void main(String[] args) {
         Scanner name = new Scanner(System.in);
-        System.out.print("Welcome to the Quest Simulator!\n\nWhat is the name of your character? ");
+        System.out.print("Welcome to the Quest Simulator!\n\nWhat is your name? ");
         String userName = name.nextLine();
 
         Scanner role = new Scanner(System.in);
-        System.out.print("What is the role of your character (k = knight, w = wizard, b = barbarian)? ");
+        System.out.print("What is your role (k = knight, w = wizard, b = barbarian)? ");
         String userRole = role.nextLine();
 
         while (!(userRole.equals("k") || userRole.equals("w") || userRole.equals("b"))) {
@@ -17,6 +17,7 @@ public class QuestRunner {
 
         QuestSimulation newQuest = new QuestSimulation(userName, userRole);
         System.out.print(newQuest.title());
+        newQuest.sleep(1000);
         System.out.print(newQuest.introductionText());
 
         Scanner answerToQuest = new Scanner(System.in);
@@ -27,7 +28,8 @@ public class QuestRunner {
             questAccept = answerToQuest.nextLine();
         }
 
-        System.out.println(newQuest.questInitiationText(questAccept));
+        System.out.print(newQuest.questInitiationText(questAccept));
+        newQuest.sleep(2000);
         System.out.print(newQuest.knowledgeTestObstacle());
 
         Scanner action = new Scanner(System.in);
@@ -38,9 +40,10 @@ public class QuestRunner {
             entranceAction = action.nextLine();
         }
 
-        System.out.println(newQuest.knowledgeTestSolution(entranceAction));
+        System.out.print(newQuest.knowledgeTestSolution(entranceAction));
 
         if (!newQuest.getGameOver()) {
+            newQuest.sleep(2000);
             System.out.print(newQuest.determinationTestObstacle());
             Scanner standUp = new Scanner(System.in);
             String chairChoice = standUp.nextLine();
@@ -48,32 +51,34 @@ public class QuestRunner {
                 System.out.print(newQuest.getUpResult());
             }
 
-            for (int attemptNum = 1; attemptNum < 5; attemptNum++) {
+            for (int stageNum = 1; stageNum < 5; stageNum++) {
                 while (!(chairChoice.equals("y") || chairChoice.equals("n"))) {
                     System.out.print("Please input a valid answer: ");
                     chairChoice = standUp.nextLine();
                 }
 
                 if (!newQuest.getGameOver()) {
-                    System.out.print(newQuest.determinationTestDilemma(attemptNum));
+                    System.out.print(newQuest.determinationTestDilemma(stageNum));
                     chairChoice = standUp.nextLine();
 
                     if (chairChoice.equals("y")) {
-                        attemptNum = 6;
+                        stageNum = 6;
                         System.out.print(newQuest.getUpResult());
                     }
                 }
             }
         }
 
+        QuestSimulation newBattle = new QuestSimulation(userRole, 75, 50);
+
         if (!newQuest.getGameOver()) {
             System.out.print(newQuest.determinationTestSolution());
+            newQuest.sleep(2000);
             System.out.print(newQuest.strengthTestObstacle());
             Scanner moveChoice = new Scanner(System.in);
 
-            QuestSimulation newBattle = new QuestSimulation(userRole, 75, 50);
             int turnNum = 1;
-            while ((turnNum < 25) && (newQuest.getBossHealth() != 0) && (!newQuest.getGameOver())) {
+            while ((turnNum < 25) && (newBattle.getBossHealth() != 0) && (!newBattle.getGameOver())) {
                 System.out.print(newQuest.strengthTestMoveChoice());
                 String userMove = moveChoice.nextLine();
 
@@ -81,25 +86,26 @@ public class QuestRunner {
                     System.out.print("Please input a valid answer: ");
                     userMove = moveChoice.nextLine();
                 }
-                if (!newQuest.getGameOver()) {
-                    System.out.print(newBattle.moveResult(userMove));
-                    System.out.print(newBattle.toString());
-                }
+
+                System.out.print(newBattle.moveResult(userMove));
+                System.out.print(newBattle.toString());
                 turnNum++;
             }
 
             if (turnNum >= 25) {
-                System.out.print(newQuest.outOfStamina());
+                System.out.print(newBattle.outOfStamina());
             }
             else {
-                System.out.print(newQuest.strengthTestSolution());
+                System.out.print(newBattle.strengthTestSolution());
             }
         }
 
-        if (!newQuest.getGameOver()) {
+        if (!newBattle.getGameOver() && !newQuest.getGameOver()) {
+            newQuest.sleep(2000);
             System.out.print(newQuest.gettingArtifactText());
 
             Scanner returnDilemma = new Scanner(System.in);
+            newQuest.sleep(2000);
             System.out.print(newQuest.runAwayDilemma());
             String returnToKingdom = returnDilemma.nextLine();
 
@@ -107,11 +113,10 @@ public class QuestRunner {
                 System.out.print("Please input a valid answer: ");
                 returnToKingdom = returnDilemma.nextLine();
             }
-
             System.out.print(newQuest.runAwaySolution(returnToKingdom));
         }
 
-        if (!newQuest.getGameOver()) {
+        if (!newBattle.getGameOver() && !newQuest.getGameOver()) {
             Scanner handOver = new Scanner(System.in);
             String handOverArtifact = handOver.nextLine();
 
@@ -119,7 +124,7 @@ public class QuestRunner {
                 System.out.print("Please input a valid answer: ");
                 handOverArtifact = handOver.nextLine();
             }
-            System.out.println(newQuest.handOverSolution(handOverArtifact));
+            System.out.print(newQuest.handOverSolution(handOverArtifact));
         }
     }
 }

@@ -1,11 +1,12 @@
 QuestSimulation class -
     Instance Variables:
-        private String name - represents the name of the user's character
-        private String role - represents the user's role
+        private String userName - represents the name of the user's character
+        private String userRole - represents the user's role
         private boolean gameOver - represents if the game has been lost/finished
         private int bossHealth - represents health of boss during test of strength
         private int userHealth - represents health of player during test of strength
         private int userDamage - represents the damage done by the user
+        private String userMove - represents the user's move during the test of determination
         public static final String ANSI_RESET = contains the ANSI escape code for color reset
         public static final String ANSI_YELLOW = contains the ANSI escape code for yellow
         public static final String ANSI_BLUE = contains the ANSI escape code for blue
@@ -15,12 +16,15 @@ QuestSimulation class -
 
     Constructors:
         public QuestSimulation (String userName, String userRole)
-            Sets name to userName (and colors name), sets role to userRole, sets gameOver to false
+            Sets userName to userName, sets userRole to userRole, sets gameOver to false
 
         public QuestionSimulation (String userRole, int userHealth, int bossHealth);
-            Sets role to userRole, sets userHealth to userHealth, sets userHealth to userHealth
+            Sets userRole to userRole, sets userHealth to userHealth, sets userHealth to userHealth
 
     Methods:
+        public void sleep (int time)
+            This method causes the code's execution to pause using TimeUnit.MILLISECONDS.sleep()
+
         public String title ()
             This method returns the text for the title for the quest
 
@@ -31,13 +35,19 @@ QuestSimulation class -
             This method returns the text for the king's response to user based on the user response to the king's offer
 
         public String knowledgeTestObstacle ()
-            This method returns the text for the test of knowledge at the dungeon entrance depending on role
+            This method returns the text for the test of knowledge at the dungeon entrance depending on userRole
 
         public String knowledgeTestSolution (String userAction)
-            This method returns the text for the result of the test of knowledge depending on the userAction and role
+            This method returns the text for the result of the test of knowledge depending on the userAction and userRole
 
         public String determinationTestObstacle ()
             This method returns the text for the test of determination in the dungeon
+
+        public String determinationTestDilemma (int stageNum)
+            This method returns the test for the test of determination depending on the stageNum
+
+        public String getUpResult ()
+            This method returns the text for the result of the user getting up during test of determination
 
         public String determinationTestSolution (String userAction)
             This method returns the text for the result of the test of determination depending on the userAction
@@ -46,7 +56,7 @@ QuestSimulation class -
             This method returns the text for the test of strength in the dungeon
 
         public String strengthTestMoveChoice ()
-            This method returns the text for the user's move options depending on role
+            This method returns the text for the user's move options depending on userRole
 
         public String moveResult (String userMove)
             This method generates the boss move, uses userDamage to generate the user's damage, changes bossHealth and userHealth according, and returns the result text depending on userRole and userMove
@@ -55,7 +65,7 @@ QuestSimulation class -
             This method returns the text for the situation that the user passes 25 turns in the test of strength
 
         public String strengthTestSolution ()
-            This method returns the text for the end of the strength test battle depending on role and gameOver
+            This method returns the text for the end of the strength test battle depending on userRole and gameOver
 
         public String gettingArtifactText ()
             This method returns the text for the user obtaining the Eye of Das
@@ -69,8 +79,8 @@ QuestSimulation class -
         public String handOverSolution (String userAction)
             This method returns the text for the result of the hand over dilemma depending on userAction
 
-        public int damage (String move)
-            This method calculates and returns the damage dealt by a player move using Math.random depending on role
+        public int userDamage (String move)
+            This method calculates and returns the damage dealt by a player move using Math.random depending on userRole
 
         public boolean getGameOver ()
             This method returns the value stored in gameOver instance variable
@@ -83,7 +93,7 @@ QuestSimulation class -
 
 QuestRunner.java -
 
-Step 1: Import scanner utility
+Step 1: Import util.Scanner
 Step 2: Create new scanner and prompt user for character name
 Step 3: Check that input matches an option, set variable userName to user input
 Step 4: Create new scanner and prompt user for character role
@@ -102,8 +112,8 @@ Step 16: If the game is not over, continue
 Step 17: Print out determination test text using determinationTestObstacle method
 Step 18: Create new scanner and prompt user for stand up choice, set chairChoice to user input
 Step 19: Repeat until user has been asked 5 times or user inputs "y"
-Step 20: If game not over, print out result of determinationTesDilemma method using attemptNum
-Step 21: If chairChoice equals "y", set attemptNum to 6 and print result from getUpResult method
+Step 20: If game not over, print out result of determinationTestDilemma method using stageNum
+Step 21: If chairChoice equals "y", set stageNum to 6 and print result from getUpResult method
 Step 22: If game not over, continue
 Step 23: Print out results from determinationTestSolution method and strengthTestObstacle method
 Step 24: Create new QuestSimulation object using userRole, 75, and 50
